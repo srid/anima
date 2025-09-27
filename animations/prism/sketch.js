@@ -42,36 +42,38 @@ class PrismAnimation extends AnimationBase {
   }
 
   drawEverything(rotY) {
-    push();
-    rotateY(rotY);
-    
-    // Draw prism wireframe
-    stroke(100, 110, 130, 150);
-    strokeWeight(2);
-    noFill();
-    
-    // Bottom triangle
-    beginShape();
-    vertex(this.corners[0].pos.x, this.corners[0].pos.y, this.corners[0].pos.z);
-    vertex(this.corners[1].pos.x, this.corners[1].pos.y, this.corners[1].pos.z);
-    vertex(this.corners[2].pos.x, this.corners[2].pos.y, this.corners[2].pos.z);
-    vertex(this.corners[0].pos.x, this.corners[0].pos.y, this.corners[0].pos.z);
-    endShape();
-    
-    // Lines to top
-    for (let i = 0; i < 3; i++) {
-      beginShape();
-      vertex(this.corners[i].pos.x, this.corners[i].pos.y, this.corners[i].pos.z);
-      vertex(this.corners[3].pos.x, this.corners[3].pos.y, this.corners[3].pos.z);
-      endShape();
-    }
-    
-    pop();
-    
-    // Draw spheres and text - ALWAYS VISIBLE
+    // Draw spheres and text FIRST - ALWAYS VISIBLE
     for (let i = 0; i < this.corners.length; i++) {
       this.drawCorner(i, rotY);
     }
+    
+    // TEMPORARILY DISABLE FILLED FACES TO TEST EDGE VISIBILITY
+    // (All 6 edges should now be visible at all times)
+    
+    // Draw wireframe edges last to ensure ALL are always visible
+    this.drawWireframeEdges(rotY);
+  }
+
+  drawWireframeEdges(rotY) {
+    // Draw all edges as individual lines to avoid depth testing issues
+    for (let i = 0; i < this.corners.length; i++) {
+      for (let j = i + 1; j < this.corners.length; j++) {
+        this.drawEdgeLine(i, j, rotY);
+      }
+    }
+  }
+
+  drawEdgeLine(i, j, rotY) {
+    push();
+    rotateY(rotY);
+    
+    stroke(100, 110, 130, 200);
+    strokeWeight(2);
+    
+    line(this.corners[i].pos.x, this.corners[i].pos.y, this.corners[i].pos.z,
+         this.corners[j].pos.x, this.corners[j].pos.y, this.corners[j].pos.z);
+    
+    pop();
   }
 
   drawCorner(index, rotY) {
