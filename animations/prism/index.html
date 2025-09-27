@@ -42,6 +42,27 @@
         a:hover {
             text-decoration: underline;
         }
+        
+        .recording-indicator {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #ff4444;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 14px;
+            display: none;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(255, 68, 68, 0.3);
+            animation: pulse-red 1.5s infinite;
+        }
+        
+        @keyframes pulse-red {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
     </style>
 </head>
 <body>
@@ -49,6 +70,10 @@
         <h1>Prism Animation</h1>
         <p>3D conceptual prism with four corners representing different aspects of behavior</p>
         <p><a href="../../">← Back to all animations</a></p>
+    </div>
+    
+    <div class="recording-indicator" id="recording-indicator">
+        🔴 Recording Video
     </div>
     
     <main id="sketch-container"></main>
