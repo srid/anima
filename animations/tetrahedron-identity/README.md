@@ -1,10 +1,10 @@
-# Prism Animation
+# Tetrahedron Identity Animation
 
-A 3D conceptual prism visualization representing four fundamental aspects of human behavior.
+A 3D conceptual tetrahedron visualization representing four fundamental aspects of human identity.
 
 ## Concept
 
-The animation displays a rotating 3D triangular prism (tetrahedron) with four distinct corners, each representing a different behavioral dimension:
+The animation displays a rotating 3D tetrahedron with four distinct corners, each representing a different aspect of identity:
 
 1. **Social: Good** - Positive social behaviors and interactions
 2. **Social: Bad** - Negative or antisocial behaviors  
@@ -13,7 +13,7 @@ The animation displays a rotating 3D triangular prism (tetrahedron) with four di
 
 ## Visual Design
 
-- **3D Geometry**: Triangular prism with 4 vertices forming a tetrahedron
+- **3D Geometry**: Tetrahedron with 4 vertices
 - **Animation**: Smooth rotation on multiple axes over 15 seconds
 - **Corner Activation**: Each corner progressively activates with:
   - Colored spheres with distinct colors for each behavioral aspect
@@ -33,4 +33,4 @@ The animation displays a rotating 3D triangular prism (tetrahedron) with four di
 
 ## Metaphor
 
-The prism serves as a metaphor for how human behavior can be viewed through different faceted perspectives, with each corner representing a fundamental drive or tendency that influences our actions and decisions.
+The tetrahedron serves as a metaphor for how human identity can be viewed through different faceted perspectives, with each corner representing a fundamental aspect that influences our sense of self and personal development.

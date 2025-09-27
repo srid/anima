@@ -4,9 +4,9 @@ function preload() {
   font = loadFont('https://fonts.gstatic.com/s/opensans/v34/memSYaGs126MiZpBA-UvWbX2vVnXBbObj2OVZyOOSr4dVJWUgsjZ0B4gaVc.ttf');
 }
 
-class PrismAnimation extends AnimationBase {
+class TetrahedronIdentityAnimation extends AnimationBase {
   constructor() {
-    super('Prism', '3D conceptual prism with four corners representing different aspects of behavior');
+    super('Tetrahedron Identity', '3D conceptual tetrahedron with four corners representing different aspects of identity');
     this.duration = 15000;
     this.corners = [
       { name: "Social: Good", color: color(150, 100, 255), pos: createVector(-180, 120, -120) }, // Purple
@@ -162,7 +162,7 @@ class PrismAnimation extends AnimationBase {
 let animation;
 
 function setup() {
-  animation = new PrismAnimation();
+  animation = new TetrahedronIdentityAnimation();
   animation.setup();
 }
 
