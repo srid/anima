@@ -4,8 +4,8 @@
   "description": "Animations for explaining psychology and spirituality concepts",
   "main": "index.html",
   "scripts": {
-    "dev": "live-server --port=3000 --open=/",
-    "serve": "live-server --port=3000 --no-browser"
+    "dev": "live-server --port=3000 --open=/ --watch=animations,lib,index.html",
+    "serve": "live-server --port=3000 --no-browser --watch=animations,lib,index.html"
   },
   "keywords": ["animation", "psychology", "p5js", "education"],
   "author": "",

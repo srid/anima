@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>prism</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            background: #1a1a1a;
+            color: white;
+            font-family: 'Monaco', 'Consolas', monospace;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .controls {
+            margin-top: 20px;
+            text-align: center;
+        }
+        
+        .key {
+            background: #333;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        
+        a {
+            color: #64b5f6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Prism Animation</h1>
+        <p>3D conceptual prism with four corners representing different aspects of behavior</p>
+        <p><a href="../../">← Back to all animations</a></p>
+    </div>
+    
+    <main id="sketch-container"></main>
+    
+    <div class="controls">
+        <p>Press <span class="key">R</span> to record GIF</p>
+        <p>Animation will loop every 15 seconds</p>
+    </div>
+
+    <script src="../../lib/animation-base.js"></script>
+    <script src="../../lib/psychology-helpers.js"></script>
+    <script src="sketch.js"></script>
+</body>
+</html>
