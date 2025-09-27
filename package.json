@@ -1,0 +1,19 @@
+{
+  "name": "anima",
+  "version": "1.0.0",
+  "description": "Animations for explaining psychology and spirituality concepts",
+  "main": "index.html",
+  "scripts": {
+    "dev": "live-server --port=3000 --open=/",
+    "serve": "live-server --port=3000 --no-browser"
+  },
+  "keywords": ["animation", "psychology", "p5js", "education"],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "p5": "^1.7.0"
+  },
+  "devDependencies": {
+    "live-server": "^1.2.2"
+  }
+}

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flow State Animation</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            background: #1a1a1a;
+            color: white;
+            font-family: 'Monaco', 'Consolas', monospace;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .controls {
+            margin-top: 20px;
+            text-align: center;
+            max-width: 700px;
+        }
+        
+        .key {
+            background: #333;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        
+        a {
+            color: #64b5f6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        .description {
+            line-height: 1.6;
+            margin: 20px 0;
+        }
+        
+        .flow-stages {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+            text-align: left;
+        }
+        
+        .stage {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 15px;
+            border-radius: 8px;
+        }
+        
+        .stage h4 {
+            margin: 0 0 10px 0;
+            color: #64b5f6;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Flow State</h1>
+        <p>Visualization of entering and maintaining the flow state of consciousness</p>
+        <p><a href="../../">← Back to all animations</a></p>
+    </div>
+    
+    <main id="sketch-container"></main>
+    
+    <div class="controls">
+        <p>Press <span class="key">R</span> to record GIF</p>
+        
+        <div class="description">
+            <p><strong>What you're seeing:</strong></p>
+            <ul style="text-align: left; display: inline-block;">
+                <li><strong>Flowing waves:</strong> Become more harmonized and intense during flow</li>
+                <li><strong>Particles:</strong> Move chaotically when not in flow, harmoniously during flow</li>
+                <li><strong>Challenge-Skill graph:</strong> Shows the balance needed for flow (top-right)</li>
+                <li><strong>Flow tunnel:</strong> Appears when deep flow is achieved</li>
+            </ul>
+        </div>
+        
+        <div class="flow-stages">
+            <div class="stage">
+                <h4>Boredom</h4>
+                <p>Challenge too low relative to skill. Mind wanders, disengagement occurs.</p>
+            </div>
+            <div class="stage">
+                <h4>Flow</h4>
+                <p>Optimal challenge-skill balance. Deep focus, time distortion, effortless performance.</p>
+            </div>
+            <div class="stage">
+                <h4>Anxiety</h4>
+                <p>Challenge exceeds skill level. Stress and overwhelm prevent optimal performance.</p>
+            </div>
+        </div>
+        
+        <div class="description">
+            <p><strong>Psychology concept:</strong> Flow State (Csikszentmihalyi) occurs when challenge 
+            and skill are optimally matched. This creates a state of effortless concentration, 
+            time distortion, and peak performance.</p>
+        </div>
+    </div>
+
+    <script src="../../lib/animation-base.js"></script>
+    <script src="../../lib/psychology-helpers.js"></script>
+    <script src="sketch.js"></script>
+</body>
+</html>
