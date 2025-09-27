@@ -9,21 +9,21 @@ class PrismAnimation extends AnimationBase {
     super('Prism', '3D conceptual prism with four corners representing different aspects of behavior');
     this.duration = 15000;
     this.corners = [
-      { name: "Social: Good", color: color(150, 100, 255), pos: createVector(-150, 150, -100) }, // Purple
-      { name: "Social: Bad", color: color(255, 70, 70), pos: createVector(150, 150, -100) },     // Red
-      { name: "Instinctual", color: color(255, 180, 50), pos: createVector(0, 150, 150) },      // Orange
-      { name: "Naiveté", color: color(50, 255, 150), pos: createVector(0, -150, 0) }            // Green
+      { name: "Social: Good", color: color(150, 100, 255), pos: createVector(-180, 120, -120) }, // Purple
+      { name: "Social: Bad", color: color(255, 70, 70), pos: createVector(180, 120, -120) },     // Red
+      { name: "Instinctual", color: color(255, 180, 50), pos: createVector(0, 120, 180) },      // Orange
+      { name: "Naiveté", color: color(50, 255, 150), pos: createVector(0, -180, 0) }            // Green
     ];
   }
 
   setup() {
-    createCanvas(800, 600, WEBGL);
+    createCanvas(600, 600, WEBGL); // Square format, more compact
     textFont(font);
     this.startTime = millis();
   }
 
   draw() {
-    background(220, 230, 240);
+    background(25, 35, 55); // Deep navy blue
     
     // Lighting
     ambientLight(80);
@@ -47,11 +47,35 @@ class PrismAnimation extends AnimationBase {
       this.drawCorner(i, rotY);
     }
     
-    // TEMPORARILY DISABLE FILLED FACES TO TEST EDGE VISIBILITY
-    // (All 6 edges should now be visible at all times)
-    
-    // Draw wireframe edges last to ensure ALL are always visible
+    // Draw wireframe edges FIRST
     this.drawWireframeEdges(rotY);
+    
+    // Draw prism fill AFTER wireframe (so fill doesn't hide edges)
+    push();
+    rotateY(rotY);
+    
+    // Warm gold fill with very low opacity - won't hide wireframe
+    fill(255, 200, 120, 15);
+    noStroke(); // No stroke to avoid conflicts with wireframe
+    
+    // Bottom triangle face
+    beginShape(TRIANGLES);
+    vertex(this.corners[0].pos.x, this.corners[0].pos.y, this.corners[0].pos.z);
+    vertex(this.corners[1].pos.x, this.corners[1].pos.y, this.corners[1].pos.z);
+    vertex(this.corners[2].pos.x, this.corners[2].pos.y, this.corners[2].pos.z);
+    endShape();
+    
+    // Three side triangular faces
+    for (let i = 0; i < 3; i++) {
+      let next = (i + 1) % 3;
+      beginShape(TRIANGLES);
+      vertex(this.corners[i].pos.x, this.corners[i].pos.y, this.corners[i].pos.z);
+      vertex(this.corners[next].pos.x, this.corners[next].pos.y, this.corners[next].pos.z);
+      vertex(this.corners[3].pos.x, this.corners[3].pos.y, this.corners[3].pos.z);
+      endShape();
+    }
+    
+    pop();
   }
 
   drawWireframeEdges(rotY) {
@@ -83,7 +107,7 @@ class PrismAnimation extends AnimationBase {
     
     // Calculate depth for opacity
     let rotatedZ = this.corners[index].pos.z * cos(rotY) - this.corners[index].pos.x * sin(rotY);
-    let opacity = map(rotatedZ, -200, 200, 120, 255);
+    let opacity = map(rotatedZ, -240, 240, 120, 255);
     opacity = constrain(opacity, 120, 255);
     
     // Draw sphere
@@ -110,8 +134,8 @@ class PrismAnimation extends AnimationBase {
     // Face camera
     rotateY(-rotY);
     
-    // Text with opacity
-    fill(0, 0, 0, opacity);
+    // White text for navy background
+    fill(255, 255, 255, opacity);
     textAlign(CENTER, CENTER);
     textSize(14);
     text(this.corners[index].name, 0, 0);
