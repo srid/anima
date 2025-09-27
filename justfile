@@ -72,28 +72,6 @@ help:
     @echo "  just clean            - Clean exports directory"
     @echo "  just install          - Install dependencies"
 
-# Update animation registry (internal)
+# Update animation registry (internal) - simplified
 _update-registry:
-    @echo "Updating animation registry..."
-    @echo '[' > animations/registry.json
-    @first=true; \
-    for dir in animations/*/; do \
-        if [ -f "$$dir/index.html" ]; then \
-            name=$$(basename "$$dir"); \
-            if [ "$$first" = true ]; then \
-                first=false; \
-            else \
-                echo ',' >> animations/registry.json; \
-            fi; \
-            title=$$(grep -o '<title>[^<]*</title>' "$$dir/index.html" | sed 's/<title>\(.*\) Animation<\/title>/\1/' || echo "$$name"); \
-            desc=$$(grep -o '<p>[^<]*</p>' "$$dir/index.html" | head -1 | sed 's/<p>\(.*\)<\/p>/\1/' || echo "Animation: $$name"); \
-            echo "  {" >> animations/registry.json; \
-            echo "    \"name\": \"$$name\"," >> animations/registry.json; \
-            echo "    \"title\": \"$$title\"," >> animations/registry.json; \
-            echo "    \"description\": \"$$desc\"" >> animations/registry.json; \
-            echo -n "  }" >> animations/registry.json; \
-        fi; \
-    done
-    @echo '' >> animations/registry.json
-    @echo ']' >> animations/registry.json
-    @echo "Registry updated"
+    @echo "Registry is now maintained manually in animations/registry.json"
