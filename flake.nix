@@ -1,5 +1,5 @@
 {
-  description = "Animation repository for psychology and spirituality concepts";
+  description = "Animation repository for abstract concepts";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
@@ -44,21 +44,21 @@
                 echo "Converts WebM video to MP4 format optimized for social media"
                 exit 1
               fi
-              
+
               input="$1"
-              
+
               # Check if input file exists
               if [ ! -f "$input" ]; then
                 echo "Error: File '$input' not found"
                 exit 1
               fi
-              
+
               # Generate output filename
               output="''${input%.*}.mp4"
-              
+
               echo "🎬 Converting $input to $output..."
               echo "📱 Optimizing for social media (X.com/Twitter)..."
-              
+
               # Convert with optimal settings for social media
               ffmpeg \
                 -i "$input" \
@@ -70,10 +70,10 @@
                 -vf "scale=trunc(iw/2)*2:trunc(ih/2)*2" \
                 -y \
                 "$output"
-              
+
               echo "✅ Conversion complete!"
               echo "📤 Upload $output to X.com/Twitter"
-              
+
               # Show file sizes
               input_size=$(du -h "$input" | cut -f1)
               output_size=$(du -h "$output" | cut -f1)

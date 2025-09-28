@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anima - Psychology & Spirituality Animations</title>
+    <title>Srid's Idea Visualizations</title>
     <style>
         body {
             margin: 0;
@@ -13,17 +13,17 @@
             font-family: 'Monaco', 'Consolas', monospace;
             line-height: 1.6;
         }
-        
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
         }
-        
+
         header {
             text-align: center;
             margin-bottom: 60px;
         }
-        
+
         h1 {
             font-size: 3em;
             margin-bottom: 20px;
@@ -32,20 +32,20 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
-        
+
         .subtitle {
             font-size: 1.2em;
             color: #aaa;
             margin-bottom: 40px;
         }
-        
+
         .animations-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
             margin-bottom: 60px;
         }
-        
+
         .animation-card {
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(255, 255, 255, 0.1);
@@ -56,26 +56,26 @@
             color: white;
             display: block;
         }
-        
+
         .animation-card:hover {
             transform: translateY(-4px);
             background: rgba(255, 255, 255, 0.08);
             border-color: #64b5f6;
             box-shadow: 0 8px 32px rgba(100, 181, 246, 0.2);
         }
-        
+
         .animation-title {
             font-size: 1.4em;
             font-weight: bold;
             margin-bottom: 12px;
             color: #64b5f6;
         }
-        
+
         .animation-description {
             color: #ccc;
             font-size: 0.95em;
         }
-        
+
         .getting-started {
             background: rgba(100, 181, 246, 0.1);
             border: 1px solid rgba(100, 181, 246, 0.3);
@@ -83,12 +83,12 @@
             padding: 30px;
             margin-bottom: 40px;
         }
-        
+
         .getting-started h2 {
             color: #64b5f6;
             margin-bottom: 20px;
         }
-        
+
         .command {
             background: rgba(0, 0, 0, 0.3);
             padding: 12px 16px;
@@ -97,21 +97,30 @@
             border-left: 4px solid #64b5f6;
             margin: 10px 0;
         }
-        
+
         .footer {
             text-align: center;
             color: #666;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             padding-top: 30px;
         }
-        
+
+        .footer a {
+            color: #64b5f6;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
         .tech-stack {
             display: flex;
             justify-content: center;
             gap: 20px;
             margin: 20px 0;
         }
-        
+
         .tech-item {
             background: rgba(255, 255, 255, 0.1);
             padding: 8px 16px;
@@ -123,31 +132,21 @@
 <body>
     <div class="container">
         <header>
-            <h1>Anima</h1>
-            <p class="subtitle">Abstract animations for explaining psychology and spirituality concepts</p>
+            <h1>Srid's Idea Visualizations</h1>
+            <p class="subtitle">Abstract animations for explaining abstract concepts</p>
             <div class="tech-stack">
                 <span class="tech-item">p5.js</span>
-                <span class="tech-item">LLM-Optimized</span>
+                <span class="tech-item">Video Export</span>
                 <span class="tech-item">GIF Export</span>
             </div>
         </header>
-
-        <div class="getting-started">
-            <h2>Getting Started</h2>
-            <p>Create a new animation with:</p>
-            <div class="command">just new my-animation-name</div>
-            <p>Start the development server:</p>
-            <div class="command">just dev</div>
-            <p>Export animations by pressing <strong>R</strong> while viewing them.</p>
-        </div>
 
         <div class="animations-grid" id="animations-grid">
             <!-- Animations will be loaded here -->
         </div>
 
         <footer class="footer">
-            <p>Built with p5.js • Optimized for LLM code generation</p>
-            <p>Press <strong>R</strong> in any animation to record a GIF</p>
+            <p>Built with p5.js | <a href="https://github.com/srid/anima">Source on GitHub</a></p>
         </footer>
     </div>
 
@@ -155,9 +154,9 @@
         // Auto-discover animations
         async function loadAnimations() {
             const animationsGrid = document.getElementById('animations-grid');
-            
+
             let animations = [];
-            
+
             try {
                 // Try to fetch the animations registry
                 const response = await fetch('animations/registry.json');
@@ -165,7 +164,7 @@
             } catch (e) {
                 // Fallback: try common animation names
                 const possibleAnimations = ['cognitive-load', 'flow-state', 'attention', 'memory', 'emotion'];
-                
+
                 for (const name of possibleAnimations) {
                     try {
                         const response = await fetch(`animations/${name}/index.html`);
@@ -173,10 +172,10 @@
                             const html = await response.text();
                             const titleMatch = html.match(/<title>(.*?)<\/title>/);
                             const title = titleMatch ? titleMatch[1].replace(' Animation', '') : name;
-                            
+
                             const descMatch = html.match(/<p>(.*?)<\/p>/);
                             const description = descMatch ? descMatch[1] : `Animation: ${name}`;
-                            
+
                             animations.push({ name, title, description });
                         }
                     } catch (e) {
@@ -184,7 +183,7 @@
                     }
                 }
             }
-            
+
             if (animations.length === 0) {
                 animationsGrid.innerHTML = `
                     <div class="animation-card" style="grid-column: 1 / -1; text-align: center;">
@@ -207,7 +206,7 @@
                 });
             }
         }
-        
+
         loadAnimations();
     </script>
 </body>

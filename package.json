@@ -1,7 +1,7 @@
 {
   "name": "anima",
   "version": "1.0.0",
-  "description": "Animations for explaining psychology and spirituality concepts",
+  "description": "Animations for explaining abstract concepts",
   "main": "index.html",
   "scripts": {
     "dev": "live-server --port=3000 --open=/ --watch=animations,lib,index.html",
