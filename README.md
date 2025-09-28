@@ -52,11 +52,10 @@ nix run .#convert -- your-video.webm
 
 Press `R` in any animation to record a GIF export:
 
-- **Duration**: Records for the animation's full cycle (e.g., 15 seconds for prism)  
+- **Duration**: Records for the animation's full cycle (e.g., 15 seconds for tetrahedron-identity)  
 - **Output**: Saves as `<animation-name>.gif`
 - **File size**: ~8MB (large)
 - **Processing time**: ~1 minute
 - **Use case**: For platforms that don't support video
 
 **Recommendation**: Use video export (`V`/`S`) for better quality and smaller files!
-# Test change for PR
